@@ -1,0 +1,64 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimTech</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    {% block styles %} {% endblock %}    
+    <script src="{{ url_for('static', filename = 'script.js') }}"></script>
+</head>
+<body> 
+    
+    
+        
+   
+    
+       
+    <hr />
+    <!--  <div class="container"> -->
+        
+        <!-- SIDE BAR AS MENU -->
+        
+    <!--   <div class="sidebar">
+           <img src="static/logo.png" alt="logo">
+          <span style="font-size:14px; color:blue;"><b><i> <u> kimtech</u></i></b></span>
+    <br />
+        <a href="/copy">COPY</a>
+        <a href="#">Member</a>
+        <a href="#">Shop</a>
+        <a href="#">Wallet</a>
+        <a href="#">Bonus Report</a>
+        <a href="#">Messages</a>
+        <a href="#">Info</a>
+    </div> 
+    <br />
+    -->
+    
+    <div class="main-content">
+        <div class="header">
+            <div>Welcome {{uname}}</div> 
+        
+        
+    {% block content %}
+        
+        <!-- BODY OF PAGES -->
+        
+        
+        {% endblock %}
+            <!--  </div>  -->
+    
+    <hr />
+    <footer>
+        <p style="color:purple">
+            Just a single tap below 👇👇👇and reach us:<br />
+            
+            E-mail: <a href="mailto:kimtech006@gmail.com">  kimtech006@gmail.com</a>  <br />  
+Call, SMS, or WhatsApp using below numbers <br />            
+            Tel:    <a href="tel:+256706749801"> +256706749801</a> / 
+            <a href="tel:+256761357092"> +256761357092</a>
+        </p>
+        ©kimtech 2025
+    </footer>
+</body>
+</html>

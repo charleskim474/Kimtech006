@@ -1,0 +1,41 @@
+{% extends "lay.html" %}
+{% block title %} Members {%endblock%}
+{% block content %}
+
+<h1>Members List</h1>
+<h3>Total Members: {{sum}}</h3>
+
+
+<form method="POST" class="search">
+		<div>
+				<p> For member profile, click below button.</p>
+				<button class="button"><a href="/search">Member help</a></button>
+		</div>
+</form>
+
+		<table class="table">
+				<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Username</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th>Rec_ID</th>
+						<th>Bal</th>
+				</tr>
+				
+				{% for m in members: %}
+				<tr>
+						<td> {{m[0]}} </td>
+						<td> {{m[1]}} - {{m[2]}}</td>
+						<td> {{ m[3]}}</td>
+						<td> {{m[4]}}</td>
+						<td> {{m[5]}}</td>
+						<td> {{m[6]}}</td>
+						<td> {{m[7]}}</td>
+						<td> {{m[8]}}</td>
+				</tr>
+				{%endfor%}
+		</table>
+{%endblock%}

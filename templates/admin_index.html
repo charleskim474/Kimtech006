@@ -1,0 +1,18 @@
+{% extends "lay.html" %}
+{% block title %} Admin Login {%endblock%}
+{% block content %}
+<h1><i> Hello Admin!  </i></h1>
+<p>Please login</p>
+
+<form method="POST" class="forms" >
+		
+		<label>USER NAME : </label>
+		<input type="text" name="uname"><br />
+		<label>PASSWORD  : </label>
+		<input type="password" name="pw"><br />
+		<button type="submit">LogIn</button><br />
+		
+		
+</form>
+
+{%endblock%}

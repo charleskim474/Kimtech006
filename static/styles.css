@@ -1,0 +1,143 @@
+/*OLD DESIGN */
+
+
+.img{
+    width:50px;
+    height:50px;
+    border-radius: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between; 
+}
+
+table{
+    width: 100%;
+    border-color:black;
+    border-collapse: collapse;
+}
+th{
+    background-color: f2f211;
+    border:2px solid;
+    paddining:8px;
+    color: red;
+}
+
+td{
+    border:2px solid;
+    paddining:8px;
+    background-color: 999999;
+}
+
+/* profile part PINK */
+.content{
+    padding:3px;
+    width:100%;
+    background-color: f400f4;
+    border-radius: 30px;
+    color: 333;
+}
+
+
+/* OVERALL BACKGROUND */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    background-color: ff11ee;
+    display: top;
+}
+
+.sidebar {
+    width: 50px;
+    background-color: lightgray;
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Ensure sidebar maintains its size */
+}
+
+.sidebar a {
+    display: block;
+    padding: 3px;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 5px;
+    height: 100;
+}
+
+.sidebar a:hover {
+    background-color: dcb34;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 3px;
+    background-color: gray;
+}
+
+.header {
+    background-color: 007bff;
+    color: white;
+    padding: 10px;
+    display: vertical;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wallet {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: block; /* Ensure wallets stack vertically */
+}
+
+.wallet h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.wallet p {
+    margin: 5px 0;
+}
+
+.wallet button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.wallet button:hover {
+    background-color: #0056b3;
+}
+
+.login{
+    width:200px;
+}
+
+.click{
+    text-decoration: none;
+    font-size: 20px;
+    display: block;
+    color: white;
+    background-color: orangered;
+    border-radius: 20px;
+}
+
+footer{
+    background-color: yellowgreen;
+    border-radius: 10px;
+}
+
+.logo{
+    width:50px;
+    height:50px;
+    border-radius: 40px;
+    padding: 10px;
+}

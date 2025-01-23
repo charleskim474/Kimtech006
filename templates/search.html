@@ -1,0 +1,47 @@
+{% extends "lay.html" %}
+{% block title %} Search results {%endblock%}
+{% block content %}
+<h2>Search results</h2>
+
+<div>
+		<form class="form" method="POST">
+				<div>
+						<p>Search by Username</p>
+						<input type="text" name="uname" placeholder="Enter username to search for">
+						<button type="submit">Find</button>
+				</div>
+		</form>
+</div>
+
+{% if results: %}
+<h1>Recruits : {{sum[0]}}</h1>
+<table class="table">
+<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Username</th>
+						<th>Phone</th>
+		 <th>Email</th>
+						<th>Password</th>
+						<th>Rec_ID</th>
+						<th>Bal</th>
+				</tr>
+				
+				{% for m in results: %}
+				<tr>
+						<td> {{m[0]}} </td>
+						<td> {{m[1]}} - {{m[2]}}</td>
+						<td> {{ m[3]}}</td>
+						<td> {{m[4]}}</td>
+						<td> {{m[5]}}</td>
+						<td> {{m[6]}}</td>
+						<td> {{m[7]}}</td>
+						<td> {{m[8]}}</td>
+				</tr>
+				{%endfor%}
+</table>
+{% else %}
+<p style="color:red;"><i> Member not found, try another name! </i></p>
+{%endif%}
+</table>
+{%endblock%}

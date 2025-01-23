@@ -1,0 +1,82 @@
+/*body{
+  font-size: 25px;
+}*/
+
+.footer{
+  width: 100%;
+  font-size: 10;
+  padding:20px;
+  background-color: yellowgreen;
+  border-bottom-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.footer a{
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.content{
+  width: 100%;
+  padding: 30px;
+  background-color: grey;
+  border-radius: 20px;
+}
+
+.image{
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+form{
+  bacground-color: grey;
+  border-radius: 20px;
+}
+.button{
+  text-decoration: none;
+  font-size: 30px;
+  color: White;
+  border-radius: 20px;
+  background-color:blue;
+}
+
+.button a{
+  text-decoration: none;
+  font-size: 35px;
+  color: white;
+}
+
+button{
+  background: rebeccapurple;
+  border: none;
+  border-radius: 20px;
+}
+.sumary{
+  background-color: lightcoral;
+  width: 95%;
+  border-radius: 10px;
+  padding: 10px;
+}
+.table th{
+  color: red;
+  background-color: palegreen;
+  font-size: 20px;
+  align-items: center;
+}
+
+.table td{
+  background-color: lightgray;
+}
+
+.form{
+  font-size: 25px;
+}
+.form button{
+  font-size: 25px;
+  color: white;
+  border-radius: 5px;
+}
+.form input{
+  size: 50px;
+}

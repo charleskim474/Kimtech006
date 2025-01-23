@@ -1,0 +1,35 @@
+{% extends "front.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+
+    <div>
+
+    <h1>Hello there</h1>
+								<p>Please login here</p>
+    <form method="POST" class="form">
+        {{form.hidden_tag() }}
+        <div>
+            {% if e==1: %}
+                <span style="color:red;">Incorrect Usernane or Password, try again!</span>
+            {% endif %}
+            
+            <div>
+                
+            {{form.uname.label }} {{form.uname(size=20)}} 
+            </div> <br />
+            <div>
+                {{form.password.label}} {{form.password(size=16)}}
+            </div>
+            
+            <div>
+                {{ form.submit() }}
+            </div>
+            
+      						  </div>
+        
+   					 </form>
+        
+        				Not having an account? :<a href="/register" style="color:green">Create One</a>
+    
+
+        {% endblock %}

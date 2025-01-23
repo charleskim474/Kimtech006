@@ -1,0 +1,89 @@
+{% extends "front.html" %}
+{% block title %} Register {%endblock%}
+{% block content %}
+
+  
+
+    <div class="container">
+
+								<h2 style="color:blue;">Hello</h2>
+								<p><b><i>Fill the below form to register.</i></b></p>
+								<p style="color:green;">Fields marked with "*" should be filled.</p>
+
+								<form method="POST"  class="content" >
+ 			 {{form.hidden_tag()}}
+  
+  		<div>
+    {{ form.name1.label }}<span style="color: red;">*</span>
+    <br />{{ form.name1(size=20)}}
+    
+    {% for e in form.name1.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+  		     <br /><br />
+    
+  </div>
+  <div>
+    {{form.name2.label}}<span style="color: red;">*</span>
+    <br />{{form.name2(size=20)}}
+    {% for e in form.name2.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+     <br /><br />
+  </div>
+  <div>
+    {% if un==1: %}
+    <span style="color:red;">Username already taken! try another one.</span>   
+    {%endif%}
+    {{form.uname.label}}<span style="color: red;">*</span>
+    <br />{{form.uname(size=20)}}
+    {% for e in form.uname.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+    
+     <br /><br />
+  </div>
+  <div>
+    {{form.tel.label}}<span style="color: red;">*</span>
+    <br />{{form.tel(size=20)}}
+    {% for e in form.tel.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+    
+     <br /><br />
+  </div>
+  <div>
+    {{form.email.label}}<br />{{form.email(size=20)}}
+    {% for e in form.email.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+    
+     <br /><br />
+  </div>
+  <div>
+    {{form.password.label}}<span style="color: red;">*</span>
+    <br />{{form.password(size=20)}}
+    {% for e in form.password.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+    
+     <br /><br />
+  </div>
+  <div>
+  {{ form.rec_id.label }} <br />{{ form.rec_id(size=20)}}  
+    {% for e in form.rec_id.errors%}
+    <span style="color:red;">{{e}}</span>
+    {%endfor%}
+    
+    
+  </div> <br />
+  <div>
+    {{form.submit()}}
+  </div>
+				</form>
+         <br /><br />
+				Already have an Accouny? 
+				<a href="/" style="color:blue;">LOGIN</a>
+      
+    
+{% endblock %}
