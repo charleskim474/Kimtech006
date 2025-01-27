@@ -6,8 +6,11 @@ mlm=MLMSystem()
 #DB CONTENTS_____________
 conn = sqlite3.connect('mlm_system.db')
 cursor = conn.cursor()
-query="SELECT * FROM members"
+query="SELECT id, rec_id, acc_bal FROM members WHERE id=11"
 
+
+#cursor.execute("DELETE FROM MEMBERS")
+#conn.commit()
 
 uery=""" WITH RECURSIVE member_h AS (
         SELECT id, uname, rec_id
@@ -18,12 +21,13 @@ uery=""" WITH RECURSIVE member_h AS (
         )
         SELECT id, uname, rec_id FROM member_h"""
 
-value='u7'
+#value='u7'
 cursor.execute(query)
 data=cursor.fetchall()
+print(data[0])
 for d in data:
     print("=>")
-    print(d)
+    print(d[2])
     
 #RECRUITS______________
     

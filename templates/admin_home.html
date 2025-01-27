@@ -3,17 +3,19 @@
 {% block content %}
 <h1>Hello admin</h1>
 
+<input type="file">choose file
+
 <hr />
 <button class="button"><a href="/register"  class="button">Register a member</a></button>
 <hr />
 <br /><br />
 <div class="sumary">
-		<h3>Total Registered members : {{total}}}</h3>
-		<h3>Total Member Balance : ...</h3>
+		<h3>Total Registered members : {{total}}</h3>
+		<h3>Total Member Balance : {{t_bal}}</h3>
 		<button class="button"> Member Profiles</button> <br /><br />
 		<button class="button"> <a href="/members"  class="button">Members List</a> </button><br /><br />
 			<button class="button">Pay</button>
-</div><br /><br />
+</div><br />  <br />
 
 <br /><br />
 {%endblock%}

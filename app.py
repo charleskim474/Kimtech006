@@ -3,12 +3,37 @@ import datetime
 from flask import Flask, request,  render_template, redirect, url_for, session
 from mlmsystem import MLMSystem
 from forms import Registration, Login
-from admin import Admin
+
 
 app=Flask('__name__')
 app.config['SECRET_KEY']='68uhf66uh678ijj6'
 
 mlm = MLMSystem()
+t_bal=0
+
+#Login_________________________     
+        
+@app.route('/', methods=['POST', 'GET'])
+def login():
+    form=Login()
+    uname=form.uname.data
+    
+    session['uname']=uname
+    
+    pw=form.password.data
+    conn = sqlite3.connect('mlm_system.db')
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM members WHERE uname=?""", (uname,))
+    member= cursor.fetchone()
+    if member:
+        if member[6]==pw:
+            return redirect(url_for('home', uname=uname)) 
+        else:
+            e=1
+            return render_template('index.html', form=form, e=e)
+    else:
+        return render_template('index.html', form=form )
+        
 
 #Registration______,,,____________
 
@@ -43,50 +68,30 @@ def add_member():
     else:
         return render_template('register.html', form=form)
        
-
-#Login_________________________     
-        
-@app.route('/', methods=['POST', 'GET'])
-def login():
-    form=Login()
-    uname=form.uname.data
-    
-    session['uname']=uname
-    
-    pw=form.password.data
-    conn = sqlite3.connect('mlm_system.db')
-    cursor = conn.cursor()
-    cursor.execute("""SELECT * FROM members WHERE uname=?""", (uname,))
-    member= cursor.fetchone()
-    if member:
-        if member[6]==pw:
-            return redirect(url_for('home', uname=uname)) 
-        else:
-            e=1
-            return render_template('index.html', form=form, e=e)
-    else:
-        return render_template('index.html', form=form )
-        
-    
 #Home page_____________________
     
     
 @app.route('/home')
 def home():
-    ad=Admin()
     n= datetime.datetime.now()
     y=str(n.year)
     m=str(n.month)
     d=str(n.day)
     h=str(n.hour)
     min=str(n.minute)
+    time=d+'/'+m+'/'+y+'-'+h+' : '+min
 
     uname=session.get('uname')
     recruits=mlm.select_all(uname)
     total=mlm.calculator(uname)
     
     myId=recruits[0]
-    return render_template('home.html', recruits=recruits, total= total, uname=uname, myId=myId)
+    conn = sqlite3.connect('mlm_system.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT acc_bal FROM members WHERE uname=?", (uname,))
+    bal=cursor.fetchall()
+    
+    return render_template('home.html', recruits=recruits, total= total, uname=uname, myId=myId, bal= bal[0])
     
     
 #ADMINISTRATION SECTION________    
@@ -100,13 +105,15 @@ def admin():
         cursor = conn.cursor()
         cursor.execute("""SELECT * FROM members""")
         members=cursor.fetchall()
-     #   conn.close()
+        conn.close()
         
         total=0
+        t_bal=0
         for m in members:
             total = total+1
+            t_bal+=m[8]
             
-        return render_template('admin_home.html', tota=total)
+        return render_template('admin_home.html', total=total, t_bal = t_bal )
     return render_template('admin_index.html')
 
 
@@ -118,9 +125,11 @@ def members():
     members=cursor.fetchall()
     conn.close()
     sum=0
+    t_bal=0
     for m in members:
+        t_bal+=m[8]
         sum+=1
-    return render_template('members.html', members=members, sum=sum )
+    return render_template('members.html', members=members, sum=sum, t_bal=t_bal )
     
     
 @app.route('/search', methods=['POST', 'GET'])
@@ -129,7 +138,8 @@ def support():
     if uname:
         result = mlm.search_member(uname)
         sum= mlm.calculator(uname)
-        return render_template('search.html', results=result, sum=sum )
+        
+        return render_template('search.html', results=result, sum=sum, t_bal=t_bal )
     return render_template('search.html')
 
 

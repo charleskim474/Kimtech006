@@ -15,6 +15,7 @@ class MLMSystem:
         cursor.execute("""INSERT INTO members(name1, name2, uname, tel, email, password, rec_id) VALUES (?, ?,?, ?, ?, ?, ?)""", (name1, name2, uname, tel, email, password, rec_id))
         conn.commit()
         conn.close()
+        self.bonus_check(rec_id)
         
         
     def field_selector(self, field, value):
@@ -60,13 +61,13 @@ class MLMSystem:
         conn = sqlite3.connect('mlm_system.db')
         cursor = conn.cursor()
         query=""" WITH RECURSIVE member_h AS (
-        SELECT id, name1, name2, uname, tel, email, password, rec_id
+        SELECT id, name1, name2, uname, tel, email, password, rec_id, acc_bal
         FROM members WHERE uname = ?
         UNION ALL
-        SELECT m.id, m.name1, m.name2, m.uname, m.tel, m.email, m.password, m.rec_id FROM members m
+        SELECT m.id, m.name1, m.name2, m.uname, m.tel, m.email, m.password, m.rec_id, m.acc_bal FROM members m
         JOIN member_h mh ON m.rec_id = mh.id
         )
-        SELECT id, name1, name2, uname, tel, email, password, rec_id FROM member_h"""
+        SELECT id, name1, name2, uname, tel, email, password, rec_id, acc_bal FROM member_h"""
         cursor.execute(query, (uname,))
         data=cursor.fetchall()
         conn.close()
@@ -93,3 +94,34 @@ class MLMSystem:
             conn.commit()
             conn.close()
         
+        
+    # bonus Check
+    def bonus_check(self, rec_id):
+        conn = sqlite3.connect('mlm_system.db')
+        cursor = conn.cursor()
+        cursor.execute("""SELECT uname FROM members WHERE id = ?""", (rec_id,))
+        data=cursor.fetchall()
+        uname=None
+        for d in data:
+            uname = d[0]
+        total = self.calculator(uname)
+        sum= total[0]
+        if sum%3 == 0:
+            self.bonus_adder(rec_id)
+        else:
+            return
+            
+    def bonus_adder(self, rec_id):
+        if rec_id != None:
+            conn = sqlite3.connect('mlm_system.db')
+            cursor = conn.cursor()
+            cursor.execute("""SELECT id, rec_id, acc_bal FROM members WHERE id = ?""", (rec_id,))
+            recruiter = cursor.fetchall()
+            for r in recruiter:
+                new_bal = r[2]+3000
+                cursor.execute("""UPDATE members SET acc_bal = ? WHERE id = ?""", (new_bal,int(r[0]) ))
+                conn.commit()
+                conn.close()
+                self.bonus_adder(r[1])
+        else:
+            return
