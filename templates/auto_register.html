@@ -1,0 +1,21 @@
+{% extends "lay.html" %}
+{% block title %} Auto Registration {% endblock%}
+{% block content %}
+
+<h1> Register member automatically</h1>
+<div class="form">
+		<form class="form" method="POST">
+				{{ form.hidden_tag()}}
+				<div>
+						{{form.id.label}} {{form.id(size=20)}}
+				</div>
+				<div>
+						{{form.uname.label}} {{form.uname(size=20)}}
+				</div>
+				<div>
+						{{form.add()}}
+				</div>
+		</form>
+</div>
+
+{%endblock%}

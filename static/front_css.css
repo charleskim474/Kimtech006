@@ -1,6 +1,7 @@
-/*body{
-  font-size: 25px;
-}*/
+body{
+  background-color: lightpink;
+  padding: 20px;
+}
 
 .footer{
   width: 100%;
@@ -71,6 +72,9 @@ button{
 
 .form{
   font-size: 25px;
+  border-radius: 20px;
+  background-color: antiquewhite;
+  padding: 20px;
 }
 .form button{
   font-size: 25px;
@@ -79,4 +83,9 @@ button{
 }
 .form input{
   size: 50px;
+}
+
+a{
+  font-size: 30px;
+  text-decoration: none;
 }

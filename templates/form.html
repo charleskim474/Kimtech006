@@ -1,0 +1,80 @@
+{% extends "front.html" %}
+{% block title %} Registration Form {% endblock%}
+{% block content %}
+<h1>Welcome,</h1>
+
+{% if msg==1 %}
+<p style="color: green;">
+				Form submitted successfully, just wait for your 
+				log in details and start earning.
+				Thank you.
+</p>
+{% else %}
+<p>
+				Please fill and submit this
+				form to initialise your account creation.<br />
+				Account will be created with in 6 
+				hours and you will receive a success message with 
+				your login credentials.
+</p>
+			<div class="form">
+				<form class="form" method="POST">
+								{{ form.hidden_tag() }}
+								<div>
+												{{ form.name1.label}} {{form.name1(size=20) }}  
+												{% for e in form.name1.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.name2.label}} {{form.name2(size=20) }}  
+												{% for e in form.name2.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.tel.label}} {{form.tel(size=20) }}  
+												{% for e in form.tel.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.email.label}} {{form.email(size=20) }}  
+												{% for e in form.email.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.rec_id.label}} {{form.rec_id(size=20) }}  
+												{% for e in form.rec_id.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.pw.label}} {{form.pw(size=20) }}  
+												{% for e in form.pw.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.txn.label}} {{form.txn(size=20) }}  
+												{% for e in form.txn.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{form.send()}}
+								</div>
+				</form>
+</div>
+
+{% endif %}
+				
+<p>
+				Your account is gonna be active in not more than 6 hours 
+				from now and you will receive a message. In case of any complain, please 
+				deliver it using any of the below contacts.
+				Thank you. Enjoy next days of fullfilling your 
+				dreams with Kimtech.
+</p>
+{%endblock%}

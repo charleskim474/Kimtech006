@@ -10,6 +10,8 @@ class MLMSystem:
         conn.close()
         
     def add_member(self, name1, name2, uname, tel, email, password, rec_id=None):
+     #   if rec_id != None:
+    #        self.bonus_check(rec_id)
         conn = sqlite3.connect('mlm_system.db')
         cursor = conn.cursor()
         cursor.execute("""INSERT INTO members(name1, name2, uname, tel, email, password, rec_id) VALUES (?, ?,?, ?, ?, ?, ?)""", (name1, name2, uname, tel, email, password, rec_id))
@@ -125,3 +127,32 @@ class MLMSystem:
                 self.bonus_adder(r[1])
         else:
             return
+            
+    def delete(self, id):
+            conn = sqlite3.connect('form_data.db')
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM forms WHERE id=?", (id,))
+            conn.commit()
+            conn.close()
+            
+            
+            
+class R_forms():
+    def __init__(self):
+        conn = sqlite3.connect('form_data.db')
+        cursor = conn.cursor()
+        cursor.execute("""CREATE TABLE IF NOT EXISTS forms(id INTEGER PRIMARY KEY, name1 TEXT, name2 TEXT, tel TEXT, email TEXT, rec_id INTEGER, password TEXT, txn TEXT NOT NULL)""")
+        conn.commit()
+        conn.close()
+    
+    
+    
+    def form(self, name1, name2, tel, email, rec_id, password, txn):
+        conn = sqlite3.connect('form_data.db')
+        cursor = conn.cursor()
+        cursor=conn.cursor()
+        query="""INSERT INTO forms(name1, name2, tel, email, rec_id, password, txn) VALUES (?,?,?,?,?,?,?)"""
+        values=(name1, name2, tel, email, rec_id, password, txn)
+        cursor.execute(query, values)
+        conn.commit()
+        conn.close()

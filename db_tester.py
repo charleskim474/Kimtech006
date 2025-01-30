@@ -4,9 +4,9 @@ from mlmsystem import MLMSystem
 mlm=MLMSystem()
 
 #DB CONTENTS_____________
-conn = sqlite3.connect('mlm_system.db')
+conn = sqlite3.connect('form_data.db')
 cursor = conn.cursor()
-query="SELECT id, rec_id, acc_bal FROM members WHERE id=11"
+query="SELECT * FROM forms"
 
 
 #cursor.execute("DELETE FROM MEMBERS")

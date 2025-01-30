@@ -1,0 +1,47 @@
+<div class="form">
+				<form class="form" method="POST">
+								{% form.hidden_tag() %}
+								<div>
+												{{ form.name1.label}} {{form.name1(size=20) }}  
+												{% for e in form.name1.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.name2.label}} {{form.name2(size=20) }}  
+												{% for e in form.name2.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.tel.label}} {{form.tel(size=20) }}  
+												{% for e in form.tel.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.email.label}} {{form.email(size=20) }}  
+												{% for e in form.email.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.rec_id.label}} {{form.rec_id(size=20) }}  
+												{% for e in form.rec_id.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.pw.label}} {{form.pw(size=20) }}  
+												{% for e in form.pw.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+								<div>
+												{{ form.txn.label}} {{form.txn(size=20) }}  
+												{% for e in form.txn.errors %}
+												<span style="color:red;">{{e}}</span>
+												{%endfor%}
+								</div>
+				</form>
+</div>
