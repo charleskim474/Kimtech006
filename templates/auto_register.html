@@ -2,6 +2,10 @@
 {% block title %} Auto Registration {% endblock%}
 {% block content %}
 
+{% if msg==0 %}
+<span style="color:red; font-size: 15px;"> Username already taken </span>
+{%endif%}
+
 <h1> Register member automatically</h1>
 <div class="form">
 		<form class="form" method="POST">
@@ -19,3 +23,4 @@
 </div>
 
 {%endblock%}
+

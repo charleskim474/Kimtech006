@@ -17,6 +17,11 @@
 				hours and you will receive a success message with 
 				your login credentials.
 </p>
+<p style="color: red;">
+				If you don't know how to make payments,
+				click <a href="/how">HERE</a> to follow the 
+				steps.
+</p>
 			<div class="form">
 				<form class="form" method="POST">
 								{{ form.hidden_tag() }}
@@ -55,6 +60,9 @@
 												{% for e in form.pw.errors %}
 												<span style="color:red;">{{e}}</span>
 												{%endfor%}
+								</div>
+								<div>
+												{{form.opt.label}} {{form.opt()}}
 								</div>
 								<div>
 												{{ form.txn.label}} {{form.txn(size=20) }}  

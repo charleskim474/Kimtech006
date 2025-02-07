@@ -4,9 +4,9 @@ from mlmsystem import MLMSystem
 mlm=MLMSystem()
 
 #DB CONTENTS_____________
-conn = sqlite3.connect('form_data.db')
+conn = sqlite3.connect('mlm_system.db')
 cursor = conn.cursor()
-query="SELECT * FROM forms"
+query="SELECT * FROM members"
 
 
 #cursor.execute("DELETE FROM MEMBERS")
@@ -24,10 +24,10 @@ uery=""" WITH RECURSIVE member_h AS (
 #value='u7'
 cursor.execute(query)
 data=cursor.fetchall()
-print(data[0])
+#print(data[0])
 for d in data:
     print("=>")
-    print(d[2])
+    print(d)
     
 #RECRUITS______________
     

@@ -24,7 +24,7 @@ class MLMSystem:
         conn = sqlite3.connect('mlm_system.db')
         cursor = conn.cursor()
         cursor.execute(f"SELECT * FROM  members WHERE {field} = ?", (value,))
-        data= cursor.fetchall()
+        data= cursor.fetchone()
         conn.close()
         return data
         
@@ -121,7 +121,7 @@ class MLMSystem:
             recruiter = cursor.fetchall()
             for r in recruiter:
                 new_bal = r[2]+3000
-                cursor.execute("""UPDATE members SET acc_bal = ? WHERE id = ?""", (new_bal,int(r[0]) ))
+                cursor.execute("""UPDATE members SET acc_bal = ? WHERE id = ?""", (new_bal, int(r[0]) ))
                 conn.commit()
                 conn.close()
                 self.bonus_adder(r[1])
@@ -141,18 +141,43 @@ class R_forms():
     def __init__(self):
         conn = sqlite3.connect('form_data.db')
         cursor = conn.cursor()
-        cursor.execute("""CREATE TABLE IF NOT EXISTS forms(id INTEGER PRIMARY KEY, name1 TEXT, name2 TEXT, tel TEXT, email TEXT, rec_id INTEGER, password TEXT, txn TEXT NOT NULL)""")
+        cursor.execute("""CREATE TABLE IF NOT EXISTS forms(id INTEGER PRIMARY KEY, name1 TEXT, name2 TEXT, tel TEXT, email TEXT, rec_id INTEGER, password TEXT, txn TEXT NOT NULL, method TEXT)""")
         conn.commit()
         conn.close()
     
     
     
-    def form(self, name1, name2, tel, email, rec_id, password, txn):
+    def form(self, name1, name2, tel, email, rec_id, password, txn, opt):
         conn = sqlite3.connect('form_data.db')
         cursor = conn.cursor()
         cursor=conn.cursor()
-        query="""INSERT INTO forms(name1, name2, tel, email, rec_id, password, txn) VALUES (?,?,?,?,?,?,?)"""
-        values=(name1, name2, tel, email, rec_id, password, txn)
+        query="""INSERT INTO forms(name1, name2, tel, email, rec_id, password, txn, method) VALUES (?,?,?,?,?,?,?, ?)"""
+        values=(name1, name2, tel, email, rec_id, password, txn, opt)
         cursor.execute(query, values)
+        conn.commit()
+        conn.close()
+        
+        
+class Cashout():
+    def __init__(self):
+        conn=sqlite3.connect('withdraw.db')
+        cursor=conn.cursor()
+        cursor.execute("""CREATE TABLE IF NOT EXISTS withdraw(id INTEGER PRIMARY KEY, time TEXT, name TEXT, amm INTEGER, status TEXT DEFAULT "Pending")""")
+        conn.commit()
+        conn.close()
+        
+    def add_request(self, time, name, amm):
+        conn=sqlite3.connect('withdraw.db')
+        cursor=conn.cursor()
+        cursor.execute("""INSERT INTO withdraw(time, name, amm) VALUES(?, ?, ?)""", (time, name, amm))
+        conn.commit()
+        conn.close()
+        
+    def new_balance(self, id, acc_bal, amm):
+        new_bal= acc_bal - amm
+        
+        conn = sqlite3.connect('mlm_system.db')
+        cursor = conn.cursor()
+        cursor.execute("""UPDATE members SET acc_bal = ? WHERE id = ?""", (new_bal, id, ))
         conn.commit()
         conn.close()

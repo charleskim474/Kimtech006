@@ -1,6 +1,6 @@
 #forms
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import DataRequired, Length, Email
 
 class Registration(FlaskForm):
@@ -26,6 +26,9 @@ class Requests(FlaskForm):
     email= StringField('Email Address', validators=[Email()])
     rec_id = StringField('Recruiter ID')
     pw =PasswordField('Prefered Password', validators=[Length(min=6)])
+    
+    opt=SelectField('Payment Method', choices= [('Select', '--select--'), ('Airtel', 'Airtel Money'), ('MTN', 'MTN Mobile Money')], validators=[DataRequired()])
+    
     txn = StringField('Transaction ID', validators=[DataRequired(), Length(min=11)])
     send=SubmitField('Submit')
     
@@ -33,3 +36,9 @@ class Auto(FlaskForm):
     id=StringField('ID', validators=[DataRequired()])
     uname=StringField('Username', validators=[DataRequired()])
     add=SubmitField('Add')
+    
+class Withdraw(FlaskForm):
+    amm = StringField('Ammount', validators=[DataRequired()])
+    name = StringField('Name Registered With your Number', validators=[DataRequired()])
+    pw=PasswordField('Your Password', validators=[DataRequired()])
+    submit=SubmitField('SUBMIT REQUEST')

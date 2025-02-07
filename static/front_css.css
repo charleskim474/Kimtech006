@@ -1,4 +1,9 @@
 body{
+  background-color: lightyellow;
+  padding: 5px;
+}
+
+header{
   background-color: lightpink;
   padding: 20px;
 }
@@ -88,4 +93,52 @@ button{
 a{
   font-size: 30px;
   text-decoration: none;
+}
+
+table{
+    width: 100%;
+    border-color:black;
+    border-collapse: collapse;
+}
+th{
+    background-color: f2f211;
+    border:2px solid;
+    paddining:8px;
+    color: red;
+}
+
+td{
+    border:2px solid;
+    paddining:8px;
+    background-color: 999999;
+}
+
+/* profile part PINK */
+.content{
+    padding:3px;
+    width:100%;
+    background-color: f400f4;
+    border-radius: 30px;
+    color: 333;
+}
+
+
+.home{
+    padding:3px;
+    width:100%;
+    background-color: f400f4;
+    border-radius: 30px;
+    color: 333;
+}
+
+.about{
+  background-color: lightcoral;  
+  padding: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 5px 5px 5px 5px #888888;
+}
+
+.request{
+  background-color: white;
 }

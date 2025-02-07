@@ -2,37 +2,33 @@
 {% block title %} Home {% endblock %}
 
 {% block content %}
-
-<div class="logo">
-  		  <img src="static/logo.png" class="logo">
-    <span style="font-size:40px;  color: blue;"><b><i> kimtech</i></b></span>
-    </div><br /><br />
    
 <h1>Welcome,</h1>
 
-
-    
-
 <div class="content">
     
-        
-        <!--   </h1> <a href="#profile"> <img src="static/profile.jpeg" class="img"> </a> -->     
     
-    <h3 style="color:blue">  Name : {{uname}} </h3>      
+    <h3 style="color:blue">  Username : {{uname}} </h3>      
     <h3>My ID : {{myId[0]}}</h3>
     <h3>Balance : {{bal[0]}}</h3>
 <h3>Total recruits: {{total[0]}}</h3>
-
+    
+    <button class="button"><a href="/withdraw">Withdraw</a></button>
 </div>
 
+<br />
 
+<div class="adv">
 <p>Do you have a new member, contact us and 
   		  receive cash. contacts are provided
   		  on the bottom of the page.
 </p>
+</div>
+
+
     <h1 style="color:blue;">My Recruits</h1>  
 
-
+<div class="table">
  <table>
     <th>ID</th>
     <th>Username</th>
@@ -45,5 +41,6 @@
     </tr>
     {% endfor %}
 </table> 
+</div>
  
 {% endblock %}

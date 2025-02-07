@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Confirm Payment Requests {%endblock%}
+{% block content %}
+
+<h3>Confirm a withdraw</h3>
+
+<div class="form">
+		<form method="POST" class="form">
+				<div>
+						<label>Withdraw ID</label>
+						<input type="text" name="id" placeholder="Withdraw ID" required>
+				</div>
+				<div>
+						<button type="submit">Confirm</button>
+				</div>
+		</form>
+</div>
+
+{%endblock%}

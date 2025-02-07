@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %} Withdraw Request {% endblock %}
+
+{% block content %}
+<h3>Request a Withdraw.</h3>
+<br />
+
+{% if msg==1 %}
+<div class="success">
+				<b><i>  Congratulations</i></b>
+				Your request is beeing delivered successfully,
+				you gonna receive your cash very soon.<br />
+				Thanks for Loving Kimtech.
+				
+</div>
+
+{% else %}
+
+
+<div class="form">
+				<form method="POST">
+								{{form.hidden_tag()}}
+								<div>
+												{% if msg==2 %}
+												<span style="color:red; font-size: 10px;"> Insufficient Account balance! try again with less ammount.</span><br />
+												{%endif%}
+												
+												{{form.amm.label}}<br /> {{form.amm(size=20, placeholder="Ammount to withdraw")}}
+								</div>
+								<div>
+												{{form.name.label}} <br /> {{form.name(size=20, placeholder="Full name Registered with your Number")}}     
+								</div>
+								<div>
+												
+												{% if msg==0 %}
+												<span style="color:red; font-size: 10px;"> Invalid Password! try again.</span><br />
+												{%endif%}
+												
+												{{form.pw.label}}  <br />{{form.pw(size=20,placeholder="Your password")}}
+								</div>
+								<div><br />
+												{{form.submit(class="button")}}
+								</div>
+								
+				</form>
+</div>
+<br />
+<br />
+{%endif%}
+
+<div class="adv">
+				<h3><b><i> Note: </i></b></h3>
+				<p>
+								For the purpose of secure funds transfer, <br />
+								You will receive your money with in not less than
+								3 hours from the time of withdraw request. Thank you for trusting kimtech,
+								enjoy your money.
+								<br />
+								<b><i> {{check}}::{{ba}}</i></b>
+				</p>
+</div>
+<br />
+
+{%endblock%}

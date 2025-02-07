@@ -9,15 +9,15 @@
     <script src="{{ url_for('static', filename = 'script.js') }}"></script>
 </head>
 <body> 
-  
+    <header>
     <img src="static/logo.png" class="image">
     <span style="font-size:40px;"><b><i> kimtech</i></b></span>
-    
+    <br />
+    <a href="/about" style="font-size:15px; color: blue;">Why Do You Join?</a>
+    </header>
     <hr />
-    <div>
 				{% block content %}
     {% endblock %}
-        </div>
     
     								<hr />
    									 <footer class="footer">

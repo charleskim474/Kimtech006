@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} Withdraw Requests {%endblock%}
+{% block content %}
+<h3>Withdraw Requests</h3>
+
+<div class="table">
+ <table>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Name</th>
+     <th>Ammount</th>
+     <th>Status</th>
+       {% for r in req: %}
+    <tr>
+        <td>{{r[0]}}</td>
+        <td>{{r[1]}}</td>
+        <td>{{r[2]}}</td>
+        <td>{{r[3]}}</td>
+        {% if r[4]=="Pending" %}
+        <td style="color: red;">{{r[4]}}</td>
+        {% else %}
+        <td style="color: green;">{{r[4]}}</td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table> 
+</div>
+
+<button class="button"> <a href="/update">Pay</a></button>
+
+{%endblock%}
