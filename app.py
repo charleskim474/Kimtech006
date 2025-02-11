@@ -255,5 +255,6 @@ def update():
         return redirect(url_for('pay'))
     return render_template('confirm_pay.html')
 
+
 if __name__ == '__main__':
     app.run(debug=True)
