@@ -89,8 +89,8 @@ class MLMSystem:
             query2="""SELECT acc_bal FROM members WHERE id=?"""
             cursor.execute(query2, (rec_id,))
             bal= cursor.fetchone()
-            bal=int(bal[0])
-            bal = bal+10000
+            bal=int(bal[0])#change down
+            bal = bal+2000
             query3="""UPDATE members SET acc_bal = ? WHERE id=?"""
             cursor.execute(query3, (bal, rec_id))
             conn.commit()
@@ -120,7 +120,7 @@ class MLMSystem:
             cursor.execute("""SELECT id, rec_id, acc_bal FROM members WHERE id = ?""", (rec_id,))
             recruiter = cursor.fetchall()
             for r in recruiter:
-                new_bal = r[2]+3000
+                new_bal = r[2]+1500
                 cursor.execute("""UPDATE members SET acc_bal = ? WHERE id = ?""", (new_bal, int(r[0]) ))
                 conn.commit()
                 conn.close()
